@@ -1,0 +1,98 @@
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 21
+Server version: 5.5.51 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database latihan2;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use latihan2;
+Database changed
+mysql> create table data_mhs
+    -> (nim int(5) not null,
+    -> nama varchar(20) not null,
+    -> alamat varchar (20) not null);
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> \. I:\data mhs.sql
+Query OK, 3 rows affected (0.08 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select *from data_mhs;
++------+------+---------+
+| nim  | nama | alamat  |
++------+------+---------+
+| 1234 | Ari  | Jakarta |
+| 1235 | Rio  | Bekasi  |
+| 1236 | Rai  | Bekasi  |
++------+------+---------+
+3 rows in set (0.00 sec)
+
+mysql> update data_mhs set nama='Ari', alamat='Cikarang'
+    -> where nim='1234';
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from data_mhs;
++------+------+--------+
+| nim  | nama | alamat |
++------+------+--------+
+| 1234 | Ari  | Bekasi |
+| 1235 | Rio  | Bekasi |
+| 1236 | Rai  | Bekasi |
++------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select *from data_mhs where nim='1234';
++------+------+--------+
+| nim  | nama | alamat |
++------+------+--------+
+| 1234 | Ari  | Bekasi |
++------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> select *from data_mhs
+    -> where nim between '1234' and '1235';
++------+------+--------+
+| nim  | nama | alamat |
++------+------+--------+
+| 1234 | Ari  | Bekasi |
+| 1235 | Rio  | Bekasi |
++------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> delete from data_mhs where nim='1236';
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select *from data_mhs;
++------+------+--------+
+| nim  | nama | alamat |
++------+------+--------+
+| 1234 | Ari  | Bekasi |
+| 1235 | Rio  | Bekasi |
++------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_latihan2 |
++--------------------+
+| data_mhs           |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> drop table data_mhs;
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql>
